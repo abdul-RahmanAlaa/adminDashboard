@@ -36,6 +36,8 @@
   &__profile {
     display: flex;
     margin: 0 1rem 0.25rem 0.5rem;
+    cursor: pointer;
+
     // transition: all 0.25s ease;
     
     &:hover &--arrow {

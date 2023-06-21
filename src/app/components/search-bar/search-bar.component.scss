@@ -1,3 +1,133 @@
 .searchBar {
-  margin: 3rem 1.5rem;
+  a {
+    text-decoration: none;
+    color: var(--main-text);
+  }
+
+  &__header {
+    display: block;
+    text-align: center;
+
+    &--text {
+      width: 10rem;
+      border-bottom: 0.5rem solid var(--blue);
+      cursor: default;
+    }
+
+    &--line {
+      border: 1px solid var(--text);
+    }
+  }
+
+  &__mainSection {
+    display: flex;
+
+    &__input {
+      display: flex;
+      position: relative;
+      background-color: var(--secondary-bg);
+      min-width: 70%;
+      border-radius: 5px;
+      margin: 1rem 0;
+      border: 1px solid var(--text);
+
+      &--btn {
+        margin: 0 0.5rem;
+        padding: 0.75rem 0;
+        cursor: pointer;
+      }
+
+      &--input {
+        height: 2.75rem;
+        min-width: 70%;
+        background-color: var(--secondary-bg);
+        border: none;
+        font-size: large;
+        padding-left: 0.5rem;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &--aside {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__separator {
+          border-left: 1px solid var(--text);
+          height: 60%;
+          margin: 0 0.75rem;
+        }
+
+        &__btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 0.5rem;
+        }
+
+        &__text {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    &__view {
+      display: flex;
+      width: 30%;
+      justify-content: end;
+      align-items: center;
+
+      &--text {
+        cursor: default;
+      }
+
+      &--btnGroup {
+        display: flex;
+        border-radius: 5px;
+        background-color: var(--secondary-bg);
+        // padding: 0.5rem 0;
+        margin: 0 0.5rem;
+        border: 1px solid var(--text);
+        box-shadow: var(--shadow);
+
+        &__btn {
+          padding: 0.25rem;
+          margin: 0.25rem;
+          border-radius: 5px;
+          cursor: pointer;
+
+          &.selected {
+            background-color: var(--blue);
+          }
+        }
+      }
+
+      &--button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid var(--text);
+        background-color: var(--secondary-bg);
+        padding: 0 1rem;
+        border-radius: 5px;
+        box-shadow: var(--shadow);
+
+        &__text {
+          cursor: pointer;
+        }
+
+        &__arrow {
+          margin: 1rem 0 1rem 1rem;
+        }
+
+        &:hover &__arrow {
+          transform: rotate(180deg);
+          transition: all 0.25s ease;
+        }
+      }
+    }
+  }
 }
