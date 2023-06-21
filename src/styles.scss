@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: NetflixSans-Regular;
+  src: url(/adminDashboard//src/assets/fonts/NetflixSans-Regular.otf);
+}
+
+:root {
+  --main-bg: rgba(18, 18, 18, 1);
+  --secondary-bg: rgb(32, 32, 32);
+  --main-text: rgba(245, 245, 241, 1);
+  --red: rgba(229, 9, 20, 1);
+  --green: rgba(0, 255, 0, 1);
+  --yellow: rgba(255, 255, 0, 1);
+  --blue: rgba(0, 0, 255, 1);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+  background-color: var(--main-bg);
+}
+
+body {
+  font-family: NetflixSans-Regular;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  display: block;
+}
