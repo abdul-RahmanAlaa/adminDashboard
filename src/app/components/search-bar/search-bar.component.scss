@@ -130,4 +130,16 @@
       }
     }
   }
+  &__filterList {
+    display: flex;
+    list-style: none;
+
+    &--item {
+      margin-right: 0.75rem;
+
+      &.active > a {
+        text-decoration: underline !important;
+      }
+    }
+  }
 }
