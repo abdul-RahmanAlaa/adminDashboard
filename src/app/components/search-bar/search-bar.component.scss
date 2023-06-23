@@ -21,6 +21,9 @@
 
   &__mainSection {
     display: flex;
+    @media only screen and (max-width: 1194px) {
+      display: block;
+    }
 
     &__input {
       display: flex;
@@ -30,6 +33,10 @@
       border-radius: 5px;
       margin: 1rem 0;
       border: 1px solid var(--text);
+      white-space: nowrap;
+      @media only screen and (max-width: 1194px) {
+        min-width: 100%;
+      }
 
       &--btn {
         margin: 0 0.5rem;
@@ -44,6 +51,9 @@
         border: none;
         font-size: large;
         padding-left: 0.5rem;
+        @media only screen and (max-width: 750px) {
+          min-width: 30%;
+        }
 
         &:focus {
           outline: none;
@@ -79,6 +89,11 @@
       width: 30%;
       justify-content: end;
       align-items: center;
+      @media only screen and (max-width: 1194px) {
+        width: 100%;
+        justify-content: start;
+        margin-bottom: 1rem;
+      }
 
       &--text {
         cursor: default;
@@ -88,14 +103,13 @@
         display: flex;
         border-radius: 5px;
         background-color: var(--secondary-bg);
-        // padding: 0.5rem 0;
-        margin: 0 0.5rem;
+        margin: 0 8px;
         border: 1px solid var(--text);
         box-shadow: var(--shadow);
 
         &__btn {
-          padding: 0.25rem;
-          margin: 0.25rem;
+          padding: 4px;
+          margin: 4px;
           border-radius: 5px;
           cursor: pointer;
 
@@ -133,7 +147,11 @@
   &__filterList {
     display: flex;
     list-style: none;
+    flex-wrap: wrap;
 
+    @media only screen and (max-width: 1194px) {
+      word-wrap: break-word;
+    }
     &--item {
       margin-right: 0.75rem;
 
