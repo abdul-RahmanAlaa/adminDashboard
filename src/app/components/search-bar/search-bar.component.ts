@@ -12,4 +12,18 @@ export class SearchBarComponent {
       this.alphabets.push(String.fromCharCode(i));
     }
   }
+
+  movies: any = [
+  
+  ];
+
+  search: string = '';
+
+  filteredData() {
+    return this.movies.filter((movie: any) => {
+      movie.title.name
+        .toLocaleLowerCase()
+        .includes(this.search.toLocaleLowerCase());
+    });
+  }
 }

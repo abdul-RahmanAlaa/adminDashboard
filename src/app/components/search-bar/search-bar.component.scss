@@ -87,7 +87,7 @@
     &__view {
       display: flex;
       width: 30%;
-      justify-content: end;
+      justify-content: flex-end;
       align-items: center;
       @media only screen and (max-width: 1194px) {
         width: 100%;

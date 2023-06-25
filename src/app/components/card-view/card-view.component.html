@@ -1,32 +1,31 @@
-<div class="card" *ngFor="let movie of movies; let i = index">
+<div class="card" *ngFor="let movie of movies">
   <div class="card__data">
-    <img
-      class="card__data--image"
-      src="../../../assets/The Witcher-Nightmare of the Wolf.jpg"
-      alt=""
-    />
+    <img class="card__data--image" [src]="movie.imgSrc" [alt]="movie.title" />
     <div class="card__data--info">
-      <h3>{{ movie2.title }}</h3>
+      <h3>{{ movie.title }}</h3>
       <div class="card__data--info__details">
-        <p class="card__data--info__details--data">12345678</p>
+        <p class="card__data--info__details--data">{{ movie.id }}</p>
         <div></div>
-        <p class="card__data--info__details--data">Movie</p>
+        <p class="card__data--info__details--data">{{ movie.type }}</p>
         <div></div>
-        <p class="card__data--info__details--data">2021</p>
+        <p class="card__data--info__details--data">{{ movie.rDate }}</p>
       </div>
       <div class="card__data--info__QC">
-        <div class="card__data--info__QC--data">
-          <img src="../../../assets/icons/yellowDot.svg" alt="" />
-          <p>2</p>
+        <div class="card__data--info__QC--data" *ngIf="movie.status != 0">
+          <img src="../../../assets/icons/yellowDot.svg" alt="Fix Notes" />
+          <p>{{ movie.status }}</p>
           <p>Fix Notes</p>
         </div>
-        <div class="card__data--info__QC--data">
-          <img src="../../../assets/icons/redDot.svg" alt="" />
-          <p>38</p>
+        <div class="card__data--info__QC--data" *ngIf="movie.failed != 0">
+          <img src="../../../assets/icons/redDot.svg" alt="Failed" />
+          <p>{{ movie.failed }}</p>
           <p>Failed</p>
         </div>
-        <div class="card__data--info__QC--data border">
-          <p>3</p>
+        <div
+          class="card__data--info__QC--data border"
+          *ngIf="movie.rushed != 0"
+        >
+          <p>{{ movie.rushed }}</p>
           <p>Rushed</p>
         </div>
       </div>
@@ -36,37 +35,37 @@
     <div class="card__details--icons">
       <ul>
         <li>
-          <img src="../../../assets/icons/play.svg" alt="" />
-          <p>11</p>
+          <img src="../../../assets/icons/play.svg" alt="Video" />
+          <p>{{ movie.nVideos }}</p>
         </li>
         <li>
-          <img src="../../../assets/icons/soundUp.svg" alt="" />
-          <p>30</p>
+          <img src="../../../assets/icons/soundUp.svg" alt="Audio" />
+          <p>{{ movie.audio }}</p>
         </li>
         <li>
-          <img src="../../../assets/icons/subtitles.svg" alt="" />
-          <p>33</p>
+          <img src="../../../assets/icons/subtitles.svg" alt="Subtitles" />
+          <p>{{ movie.subtitles }}</p>
         </li>
         <li>
-          <img src="../../../assets/icons/mic.svg" alt="" />
-          <p>70</p>
+          <img src="../../../assets/icons/mic.svg" alt="Dub Audio" />
+          <p>{{ movie.dub }}</p>
         </li>
         <li>
-          <img src="../../../assets/icons/AD.svg" alt="" />
-          <p>0</p>
+          <img src="../../../assets/icons/AD.svg" alt="Audio Description" />
+          <p>{{ movie.ad }}</p>
         </li>
         <li>
-          <img src="../../../assets/icons/play.svg" alt="" />
-          <p>0</p>
+          <img src="../../../assets/icons/play.svg" alt="Forced Narrative" />
+          <p>{{ movie.fn }}</p>
         </li>
         <li>
-          <img src="../../../assets/icons/play.svg" alt="" />
-          <p>0</p>
+          <img src="../../../assets/icons/play.svg" alt="Closed Captioning" />
+          <p>{{ movie.cc }}</p>
         </li>
       </ul>
     </div>
     <a href="">
-      <img src="../../../assets/icons/arrowRight.svg" alt="" />
+      <img src="../../../assets/icons/arrowRight.svg" alt="more details" />
     </a>
   </div>
 </div>

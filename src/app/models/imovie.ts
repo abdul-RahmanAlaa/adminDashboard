@@ -1,9 +1,10 @@
 export interface IMovie {
   id: number;
   title: string;
+  imgSrc: string;
   type: string;
   rDate: number;
-  fix: number;
+  status: number;
   failed: number;
   rushed: number;
   nVideos: number;
