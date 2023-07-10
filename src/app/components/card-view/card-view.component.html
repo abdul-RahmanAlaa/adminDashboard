@@ -1,31 +1,59 @@
-<div class="card" *ngFor="let movie of movies">
+<ul class="filterList">
+  <li class="filterList__item active" [class.active]="selectedFilter === 'All'">
+    <a
+      (click)="
+        selectedFilter = 'All'; elements = filterElements(selectedFilter)
+      "
+      >All</a
+    >
+  </li>
+  <li
+    class="filterList__item"
+    *ngFor="let alphabet of alphabets; let i = index"
+    [class.active]="selectedFilter === alphabet"
+  >
+    <a
+      (click)="
+        selectedFilter = alphabet; elements = filterElements(selectedFilter)
+      "
+    >
+      {{ alphabet }}
+    </a>
+  </li>
+</ul>
+
+<div class="card" *ngFor="let element of elements">
   <div class="card__data">
-    <img class="card__data--image" [src]="movie.imgSrc" [alt]="movie.title" />
+    <img
+      class="card__data--image"
+      [src]="element.imgSrc"
+      [alt]="element.title"
+    />
     <div class="card__data--info">
-      <h3>{{ movie.title }}</h3>
+      <h3>{{ element.title }}</h3>
       <div class="card__data--info__details">
-        <p class="card__data--info__details--data">{{ movie.id }}</p>
+        <p class="card__data--info__details--data">{{ element.id }}</p>
         <div></div>
-        <p class="card__data--info__details--data">{{ movie.type }}</p>
+        <p class="card__data--info__details--data">{{ element.type }}</p>
         <div></div>
-        <p class="card__data--info__details--data">{{ movie.rDate }}</p>
+        <p class="card__data--info__details--data">{{ element.rDate }}</p>
       </div>
       <div class="card__data--info__QC">
-        <div class="card__data--info__QC--data" *ngIf="movie.status != 0">
+        <div class="card__data--info__QC--data" *ngIf="element.status != 0">
           <img src="../../../assets/icons/yellowDot.svg" alt="Fix Notes" />
-          <p>{{ movie.status }}</p>
+          <p>{{ element.status }}</p>
           <p>Fix Notes</p>
         </div>
-        <div class="card__data--info__QC--data" *ngIf="movie.failed != 0">
+        <div class="card__data--info__QC--data" *ngIf="element.failed != 0">
           <img src="../../../assets/icons/redDot.svg" alt="Failed" />
-          <p>{{ movie.failed }}</p>
+          <p>{{ element.failed }}</p>
           <p>Failed</p>
         </div>
         <div
           class="card__data--info__QC--data border"
-          *ngIf="movie.rushed != 0"
+          *ngIf="element.rushed != 0"
         >
-          <p>{{ movie.rushed }}</p>
+          <p>{{ element.rushed }}</p>
           <p>Rushed</p>
         </div>
       </div>
@@ -36,31 +64,31 @@
       <ul>
         <li>
           <img src="../../../assets/icons/play.svg" alt="Video" />
-          <p>{{ movie.nVideos }}</p>
+          <p>{{ element.nVideos }}</p>
         </li>
         <li>
           <img src="../../../assets/icons/soundUp.svg" alt="Audio" />
-          <p>{{ movie.audio }}</p>
+          <p>{{ element.audio }}</p>
         </li>
         <li>
           <img src="../../../assets/icons/subtitles.svg" alt="Subtitles" />
-          <p>{{ movie.subtitles }}</p>
+          <p>{{ element.subtitles }}</p>
         </li>
         <li>
           <img src="../../../assets/icons/mic.svg" alt="Dub Audio" />
-          <p>{{ movie.dub }}</p>
+          <p>{{ element.dub }}</p>
         </li>
         <li>
           <img src="../../../assets/icons/AD.svg" alt="Audio Description" />
-          <p>{{ movie.ad }}</p>
+          <p>{{ element.ad }}</p>
         </li>
         <li>
           <img src="../../../assets/icons/play.svg" alt="Forced Narrative" />
-          <p>{{ movie.fn }}</p>
+          <p>{{ element.fn }}</p>
         </li>
         <li>
-          <img src="../../../assets/icons/play.svg" alt="Closed Captioning" />
-          <p>{{ movie.cc }}</p>
+          <img src="../../../assets/icons/CC.svg" alt="Closed Captioning" />
+          <p>{{ element.cc }}</p>
         </li>
       </ul>
     </div>

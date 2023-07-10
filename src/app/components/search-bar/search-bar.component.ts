@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -6,24 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent {
-  alphabets: string[] = [];
-  ngOnInit() {
-    for (let i = 65; i <= 90; i++) {
-      this.alphabets.push(String.fromCharCode(i));
-    }
+  searchValue: string = '';
+
+  // the model toggler start here
+  @Output() toggleShowModal = new EventEmitter<boolean>();
+  showModal = false;
+
+  toggleShowModalValue(): void {
+    this.showModal = !this.showModal;
+    this.toggleShowModal.emit(this.showModal);
   }
-
-  movies: any = [
-  
-  ];
-
-  search: string = '';
-
-  filteredData() {
-    return this.movies.filter((movie: any) => {
-      movie.title.name
-        .toLocaleLowerCase()
-        .includes(this.search.toLocaleLowerCase());
-    });
-  }
+  // the model toggler end here
 }

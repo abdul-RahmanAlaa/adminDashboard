@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { IMovie } from '../models/imovie';
+import { IElement } from '../models/ielement';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MoviesService {
-  movies: IMovie[];
+export class ElementsService {
+  element: IElement[];
 
   constructor() {
-    this.movies = [
+    this.element = [
       {
         id: 81461540,
         title: 'Copycat Killer: Season 1',

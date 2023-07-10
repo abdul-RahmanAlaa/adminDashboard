@@ -83,12 +83,42 @@
         & > li {
           margin-right: 2rem;
 
+          & > img {
+            aspect-ratio: 3/2;
+            object-fit: contain !important;
+          }
+
           & > p {
             margin: auto;
             width: 60%;
           }
         }
       }
+    }
+  }
+}
+.filterList {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+
+  & a {
+    color: var(--main-text);
+  }
+
+  @media only screen and (max-width: 1194px) {
+    word-wrap: break-word;
+  }
+  &__item {
+    margin-right: 0.75rem;
+
+    & > a {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    &.active {
+      text-decoration: underline;
     }
   }
 }

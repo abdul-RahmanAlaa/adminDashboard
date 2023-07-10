@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { CardViewComponent } from './components/card-view/card-view.component';
-import { ListViewComponent } from './components/list-view/list-view.component';
-import { SingleObjectComponent } from './components/single-object/single-object.component';
+import { FormsModule } from '@angular/forms';
+import { AddingModalComponent } from './components/adding-modal/adding-modal.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +15,10 @@ import { SingleObjectComponent } from './components/single-object/single-object.
     NavbarComponent,
     SearchBarComponent,
     CardViewComponent,
-    ListViewComponent,
-    SingleObjectComponent
+    AddingModalComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

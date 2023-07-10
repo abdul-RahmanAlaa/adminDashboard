@@ -1,0 +1,56 @@
+<div class="overlay" [ngClass]="{ show: showModal }"></div>
+
+<div class="modal" [ngClass]="{ show: showModal }">
+  <div class="modal__header">
+    <div class="modal__header--title"></div>
+    <div class="modal__header--title">
+      <h2>Add Element</h2>
+    </div>
+    <div class="modal__header--title">
+      <a type="button" (click)="closeModal()">
+        <span>&times;</span>
+      </a>
+    </div>
+  </div>
+
+  <form class="modal__body">
+    <div class="modal__body--field">
+      <label for="Title">Element Title :</label>
+      <input type="text" name="Title" />
+    </div>
+    <div class="modal__body--field">
+      <label for="image">Element image sucre :</label>
+      <input type="url" name="image" />
+    </div>
+    <div class="modal__body--field">
+      <label for="type">Element type :</label>
+      <select name="type">
+        <option value="volvo">Movies</option>
+        <option value="saab">Series</option>
+        <option value="opel">Stand Alone</option>
+        <option value="audi">Multiple Editions</option>
+      </select>
+    </div>
+    <div class="modal__body--field">
+      <label for="Title">Element Release date :</label>
+      <input type="number" name="rDate" />
+    </div>
+    <div class="modal__body--field">
+      <label for="Title">Element status :</label>
+      <input type="text" name="Title" />
+    </div>
+  </form>
+
+  <div class="modal__footer">
+    <div>
+      <a type="button" class="modal__footer--button" (click)="closeModal()">
+        Close
+      </a>
+    </div>
+    <div>
+      <a type="button" class="modal__footer--button" (click)="saveModal()">
+        Save changes
+      </a>
+    </div>
+  </div>
+</div>

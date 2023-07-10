@@ -1,6 +1,5 @@
 .searchBar {
   a {
-    text-decoration: none;
     color: var(--main-text);
   }
 
@@ -51,6 +50,7 @@
         border: none;
         font-size: large;
         padding-left: 0.5rem;
+        margin-right: 0.5rem;
         @media only screen and (max-width: 750px) {
           min-width: 30%;
         }
@@ -64,6 +64,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        & > a {
+          text-decoration: none;
+        }
 
         &__separator {
           border-left: 1px solid var(--text);
@@ -141,22 +145,6 @@
           transform: rotate(180deg);
           transition: all 0.25s ease;
         }
-      }
-    }
-  }
-  &__filterList {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-
-    @media only screen and (max-width: 1194px) {
-      word-wrap: break-word;
-    }
-    &--item {
-      margin-right: 0.75rem;
-
-      &.active > a {
-        text-decoration: underline !important;
       }
     }
   }

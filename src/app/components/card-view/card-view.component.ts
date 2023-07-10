@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { IMovie } from 'src/app/models/imovie';
-import { MoviesService } from 'src/app/services/movies.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { IElement } from 'src/app/models/ielement';
+import { ElementsService } from 'src/app/services/elements.service';
 
 @Component({
   selector: 'app-card-view',
@@ -8,12 +8,59 @@ import { MoviesService } from 'src/app/services/movies.service';
   styleUrls: ['./card-view.component.scss'],
 })
 export class CardViewComponent implements OnInit {
-  movies: IMovie[] = [];
+  elements: IElement[] = [];
+  private _childListFilter: string = '';
 
-  constructor(private moviesService: MoviesService) {}
+  // the alphabets filters start here
+  alphabets: string[] = [];
+  selectedFilter = 'All';
+
+  // the alphabets filters end here
+
+  constructor(private elementService: ElementsService) {}
+
   ngOnInit(): void {
-    this.movies = this.moviesService.movies;
+    this.elements = this.elementService.element;
+
+    for (let i = 65; i <= 90; i++) {
+      this.alphabets.push(String.fromCharCode(i));
+    }
   }
 
-  // search: string = '';
+  @Input() get childListFilter(): string {
+    return this._childListFilter;
+  }
+
+  set childListFilter(value: string) {
+    this._childListFilter = value;
+    this.elements = this.filterElements( this.selectedFilter);
+    this.elements = this.searchElements( value);
+
+  }
+
+  searchElements(filterBy: string): IElement[] {
+    if (filterBy === '') {
+      return (this.elements = this.elementService.element);
+    } else {
+      filterBy = filterBy.toLocaleLowerCase();
+      return this.elements.filter((element: IElement) =>
+        element.title.toLocaleLowerCase().includes(filterBy)
+      );
+    }
+  }
+
+  filterElements( selectedFilter: string): IElement[] {
+    let filteredElements = this.elementService.element;
+
+    if (selectedFilter !== 'All') {
+      filteredElements = filteredElements.filter(
+        (element: IElement) =>
+          element.title.charAt(0).toLocaleLowerCase() ===
+          selectedFilter.toLocaleLowerCase()
+      );
+    } else {
+      filteredElements = this.elementService.element;
+    }
+    return filteredElements;
+  }
 }
