@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IElement } from 'src/app/models/ielement';
 import { ElementsService } from 'src/app/services/elements.service';
 
@@ -19,8 +26,19 @@ export class CardViewComponent implements OnInit {
 
   constructor(private elementService: ElementsService) {}
 
+  getElementsList() {
+    this.elementService.getElements().subscribe({
+      next: (res) => {
+        this.elements = res;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   ngOnInit(): void {
-    this.elements = this.elementService.element;
+    this.getElementsList();
 
     for (let i = 65; i <= 90; i++) {
       this.alphabets.push(String.fromCharCode(i));
@@ -33,14 +51,17 @@ export class CardViewComponent implements OnInit {
 
   set childListFilter(value: string) {
     this._childListFilter = value;
-    this.elements = this.filterElements( this.selectedFilter);
-    this.elements = this.searchElements( value);
-
+    if (value === '') {
+      this.getElementsList();
+    } else {
+      this.elements = this.searchElements(value);
+    }
   }
 
   searchElements(filterBy: string): IElement[] {
     if (filterBy === '') {
-      return (this.elements = this.elementService.element);
+      this.getElementsList();
+      return this.elements;
     } else {
       filterBy = filterBy.toLocaleLowerCase();
       return this.elements.filter((element: IElement) =>
@@ -49,8 +70,8 @@ export class CardViewComponent implements OnInit {
     }
   }
 
-  filterElements( selectedFilter: string): IElement[] {
-    let filteredElements = this.elementService.element;
+  filterElements(selectedFilter: string): IElement[] {
+    let filteredElements = this.elements;
 
     if (selectedFilter !== 'All') {
       filteredElements = filteredElements.filter(
@@ -59,7 +80,8 @@ export class CardViewComponent implements OnInit {
           selectedFilter.toLocaleLowerCase()
       );
     } else {
-      filteredElements = this.elementService.element;
+      this.getElementsList();
+      return this.elements;
     }
     return filteredElements;
   }

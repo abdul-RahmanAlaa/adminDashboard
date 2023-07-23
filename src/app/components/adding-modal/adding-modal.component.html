@@ -13,31 +13,31 @@
     </div>
   </div>
 
-  <form class="modal__body">
+  <form class="modal__body" [formGroup]="elementForm">
     <div class="modal__body--field">
-      <label for="Title">Element Title :</label>
-      <input type="text" name="Title" />
+      <label for="title">Element Title :</label>
+      <input type="text" name="title" formControlName="title" />
     </div>
     <div class="modal__body--field">
       <label for="image">Element image sucre :</label>
-      <input type="url" name="image" />
+      <input type="url" name="image" formControlName="image" />
     </div>
     <div class="modal__body--field">
       <label for="type">Element type :</label>
-      <select name="type">
-        <option value="volvo">Movies</option>
-        <option value="saab">Series</option>
-        <option value="opel">Stand Alone</option>
-        <option value="audi">Multiple Editions</option>
+      <select name="type" formControlName="type">
+        <option value="movies">Movies</option>
+        <option value="series">Series</option>
+        <option value="standAlone">Stand Alone</option>
+        <option value="multipleEditions">Multiple Editions</option>
       </select>
     </div>
     <div class="modal__body--field">
-      <label for="Title">Element Release date :</label>
-      <input type="number" name="rDate" />
+      <label for="rDate">Element Release date :</label>
+      <input type="number" name="rDate" formControlName="rDate" />
     </div>
     <div class="modal__body--field">
-      <label for="Title">Element status :</label>
-      <input type="text" name="Title" />
+      <label for="status">Element status :</label>
+      <input type="text" name="status" formControlName="status" />
     </div>
   </form>
 
@@ -48,7 +48,7 @@
       </a>
     </div>
     <div>
-      <a type="button" class="modal__footer--button" (click)="saveModal()">
+      <a type="submit" class="modal__footer--button" (click)="saveModal()">
         Save changes
       </a>
     </div>
