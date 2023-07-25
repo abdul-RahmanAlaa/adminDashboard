@@ -1,104 +1,70 @@
 {
   "elements": [
     {
-      "id": 81461540,
-      "title": "Copycat Killer: Season 1",
-      "imgSrc": "../../../assets/images/CopycatKiller.jpg",
+      "id": "964e693b-bbdf-4f03-a9e0-dc5cc7b9acbd",
+      "name": "Copycat Killer: Season 1",
       "type": "Series",
-      "rDate": 2023,
-      "status": 2,
-      "failed": 38,
-      "rushed": 3,
-      "nVideos": 11,
-      "audio": 30,
-      "subtitles": 33,
-      "dub": 70,
-      "ad": 0,
-      "fn": 0,
-      "cc": 0
+      "releaseDate": "2023",
+      "genres": [
+        "idk",
+        "idk",
+        "idk"
+      ],
+      "description": "NA",
+      "image": "../../../assets/images/CopycatKiller.jpg",
+      "status": "finished",
+      "subtitles": 4,
+      "dubbing": 4,
+      "rate": 6.7
     },
     {
-      "id": 81397078,
-      "title": "FUBAR: Season 1",
-      "imgSrc": "../../../assets/images/fubar.jpg",
+      "id": "16a9a6a4-39b7-4568-ab0d-3d8e61b81f13",
+      "name": "FUBAR: Season 1",
       "type": "Series",
-      "rDate": 0,
-      "status": 0,
-      "failed": 44,
-      "rushed": 0,
-      "nVideos": 8,
-      "audio": 24,
+      "releaseDate": "2023",
+      "genres": [
+        "idk",
+        "idk",
+        "idk"
+      ],
+      "description": "NA",
+      "image": "../../../assets/images/fubar.jpg",
+      "status": "finished ",
       "subtitles": 3,
-      "dub": 90,
-      "ad": 4,
-      "fn": 8,
-      "cc": 0
+      "dubbing": 3,
+      "rate": 5.5
     },
     {
-      "id": 81444818,
-      "title": "The Pale Blue Eye",
-      "imgSrc": "../../../assets/images/ThePaleBlueEye.jpg",
-      "type": "Standalone",
-      "rDate": 2022,
-      "status": 0,
-      "failed": 18,
-      "rushed": 0,
-      "nVideos": 1,
-      "audio": 14,
-      "subtitles": 36,
-      "dub": 32,
-      "ad": 7,
-      "fn": 7,
-      "cc": 10
+      "id": "40150176-ca64-4926-b631-7b9905b93f91",
+      "name": "The Pale Blue Eye",
+      "type": "Series",
+      "releaseDate": "2022",
+      "genres": [
+        "idk",
+        "idk"
+      ],
+      "description": "NA",
+      "image": "../../../assets/images/ThePaleBlueEye.jpg",
+      "status": "airing",
+      "subtitles": 5,
+      "dubbing": 5,
+      "rate": 7.5
     },
     {
-      "id": 1,
-      "title": "The Witcher: Nightmare of the Wolf",
-      "imgSrc": "../../../assets/images/The Witcher-Nightmare of the Wolf.jpg",
-      "type": "Movie",
-      "rDate": 2021,
-      "status": 2,
-      "failed": 38,
-      "rushed": 3,
-      "nVideos": 11,
-      "audio": 30,
-      "subtitles": 33,
-      "dub": 70,
-      "ad": 0,
-      "fn": 0,
-      "cc": 0
-    },
-    {
-      "title": "asd",
-      "image": "asd",
-      "type": "series",
-      "rDate": 234,
-      "status": "asd",
-      "id": 81461541
-    },
-    {
-      "title": "aaaa",
-      "image": "asd",
-      "type": "multipleEditions",
-      "rDate": 12423,
-      "status": "asd",
-      "id": 81461542
-    },
-    {
-      "title": "asdas",
-      "image": "asdas",
-      "type": "series",
-      "rDate": 876,
-      "status": "asd",
-      "id": 81461543
-    },
-    {
-      "title": "the new movie",
-      "image": "link",
-      "type": "standAlone",
-      "rDate": 2023,
-      "status": "finshed",
-      "id": 81461544
+      "id": "40150176-ca64-4926-b631-7b9905b93f91",
+      "name": "The Pale Blue Eye",
+      "type": "Series",
+      "releaseDate": "2022",
+      "genres": [
+        "idk",
+        "idk"
+      ],
+      "description": "NA",
+      "image": "../../../assets/images/ThePaleBlueEye.jpg",
+      "status": "airing",
+      "subtitles": 5,
+      "dubbing": 5,
+      "rate": 7.5
     }
   ]
 }

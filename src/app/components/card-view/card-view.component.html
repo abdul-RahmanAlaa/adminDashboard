@@ -4,8 +4,9 @@
       (click)="
         selectedFilter = 'All'; elements = filterElements(selectedFilter)
       "
-      >All</a
     >
+      All
+    </a>
   </li>
   <li
     class="filterList__item"
@@ -26,74 +27,49 @@
   <div class="card__data">
     <img
       class="card__data--image"
-      [src]="element.imgSrc"
-      [alt]="element.title"
+      [src]="element.image"
+      [alt]="element.name"
     />
     <div class="card__data--info">
-      <h3>{{ element.title }}</h3>
+      <h3>{{ element.name }}</h3>
       <div class="card__data--info__details">
         <p class="card__data--info__details--data">{{ element.id }}</p>
         <div></div>
         <p class="card__data--info__details--data">{{ element.type }}</p>
         <div></div>
-        <p class="card__data--info__details--data">{{ element.rDate }}</p>
+        <p class="card__data--info__details--data">{{ element.releaseDate }}</p>
       </div>
       <div class="card__data--info__QC">
-        <div class="card__data--info__QC--data" *ngIf="element.status != 0">
+        <div class="card__data--info__QC--data" *ngIf="element.rate != 0">
           <img src="../../../assets/icons/yellowDot.svg" alt="Fix Notes" />
           <p>{{ element.status }}</p>
           <p>Fix Notes</p>
         </div>
-        <div class="card__data--info__QC--data" *ngIf="element.failed != 0">
+        <div class="card__data--info__QC--data" *ngIf="element.dubbing != 0">
           <img src="../../../assets/icons/redDot.svg" alt="Failed" />
-          <p>{{ element.failed }}</p>
+          <p>{{ element.dubbing }}</p>
           <p>Failed</p>
         </div>
         <div
           class="card__data--info__QC--data border"
-          *ngIf="element.rushed != 0"
+          *ngIf="element.subtitles != 0"
         >
-          <p>{{ element.rushed }}</p>
+          <p>{{ element.subtitles }}</p>
           <p>Rushed</p>
         </div>
       </div>
     </div>
   </div>
   <div class="card__details">
-    <div class="card__details--icons">
-      <ul>
-        <li>
-          <img src="../../../assets/icons/play.svg" alt="Video" />
-          <p>{{ element.nVideos }}</p>
-        </li>
-        <li>
-          <img src="../../../assets/icons/soundUp.svg" alt="Audio" />
-          <p>{{ element.audio }}</p>
-        </li>
-        <li>
-          <img src="../../../assets/icons/subtitles.svg" alt="Subtitles" />
-          <p>{{ element.subtitles }}</p>
-        </li>
-        <li>
-          <img src="../../../assets/icons/mic.svg" alt="Dub Audio" />
-          <p>{{ element.dub }}</p>
-        </li>
-        <li>
-          <img src="../../../assets/icons/AD.svg" alt="Audio Description" />
-          <p>{{ element.ad }}</p>
-        </li>
-        <li>
-          <img src="../../../assets/icons/play.svg" alt="Forced Narrative" />
-          <p>{{ element.fn }}</p>
-        </li>
-        <li>
-          <img src="../../../assets/icons/CC.svg" alt="Closed Captioning" />
-          <p>{{ element.cc }}</p>
-        </li>
-      </ul>
-    </div>
-    <a href="">
-      <img src="../../../assets/icons/arrowRight.svg" alt="more details" />
+    <div class="card__details--icons"></div>
+    <a>
+      <img
+        src="../../../assets/icons/arrowRight.svg"
+        alt="more details"
+        class="moreDetails"
+        (click)="toggleShowEditingModalValue(element.id)"
+      />
     </a>
   </div>
 </div>
+<app-edit [showEditingModal]="showEditingModal" [elementId]="elementId" />

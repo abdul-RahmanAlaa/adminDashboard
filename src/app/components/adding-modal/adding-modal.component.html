@@ -1,6 +1,6 @@
-<div class="overlay" [ngClass]="{ show: showModal }"></div>
+<div class="overlay" [ngClass]="{ show: showAddingModal }"></div>
 
-<div class="modal" [ngClass]="{ show: showModal }">
+<div class="modal" [ngClass]="{ show: showAddingModal }">
   <div class="modal__header">
     <div class="modal__header--title"></div>
     <div class="modal__header--title">
@@ -15,29 +15,61 @@
 
   <form class="modal__body" [formGroup]="elementForm">
     <div class="modal__body--field">
-      <label for="title">Element Title :</label>
-      <input type="text" name="title" formControlName="title" />
+      <label for="name">Element Name :</label>
+      <input type="text" name="name" formControlName="name" />
     </div>
+
+    <div class="modal__body--field">
+      <label for="type">Element Type :</label>
+      <select name="type" formControlName="type">
+        <option value="Series">Series</option>
+        <option value="Movies">Movies</option>
+      </select>
+    </div>
+
+    <div class="modal__body--field">
+      <label for="releaseDate">Element Release Date :</label>
+      <input type="datetime" name="releaseDate" formControlName="releaseDate" />
+    </div>
+
     <div class="modal__body--field">
       <label for="image">Element image sucre :</label>
       <input type="url" name="image" formControlName="image" />
     </div>
-    <div class="modal__body--field">
-      <label for="type">Element type :</label>
-      <select name="type" formControlName="type">
-        <option value="movies">Movies</option>
-        <option value="series">Series</option>
-        <option value="standAlone">Stand Alone</option>
-        <option value="multipleEditions">Multiple Editions</option>
-      </select>
-    </div>
-    <div class="modal__body--field">
-      <label for="rDate">Element Release date :</label>
-      <input type="number" name="rDate" formControlName="rDate" />
-    </div>
+
     <div class="modal__body--field">
       <label for="status">Element status :</label>
       <input type="text" name="status" formControlName="status" />
+    </div>
+
+    <div class="modal__body--field">
+      <label for="subtitles">Element Subtitles :</label>
+      <input type="number" name="subtitles" formControlName="subtitles" />
+    </div>
+
+    <div class="modal__body--field">
+      <label for="dubbing">Element Dubbing :</label>
+      <input type="number" name="dubbing" formControlName="dubbing" />
+    </div>
+
+    <div class="modal__body--field">
+      <label for="rate">Element Rate :</label>
+      <input type="number" name="rate" formControlName="rate" />
+    </div>
+
+    <div class="modal__body--field">
+      <label for="description">Element Description :</label>
+      <input type="text" name="description" formControlName="description" />
+    </div>
+
+    <div class="modal__body--field">
+      <label for="genres">Element Genres :</label>
+      <div formArrayName="genres">
+        <div *ngFor="let genre of genres.controls; let i = index">
+          <input type="text" name="genres" [formControlName]="i" />
+        </div>
+      </div>
+      <a type="button" (click)="addGenre()">Add Genre</a>
     </div>
   </form>
 

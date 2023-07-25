@@ -1,8 +1,6 @@
 <div class="searchBar">
   <div class="searchBar__header">
-    <h4 class="searchBar__header--text">
-      My Titles (4)
-    </h4>
+    <h4 class="searchBar__header--text">My Titles (4)</h4>
     <hr class="searchBar__header--line" />
   </div>
   <div class="searchBar__mainSection">
@@ -16,7 +14,7 @@
         class="searchBar__mainSection__input--btn"
         src="../../../assets/icons/plus.svg"
         alt="List"
-        (click)="toggleShowModalValue()"
+        (click)="toggleShowAddingModalValue()"
       />
       <input
         class="searchBar__mainSection__input--input"
@@ -26,9 +24,7 @@
       />
       <div class="searchBar__mainSection__input--aside">
         <a href="">
-          <p>
-            Reset
-          </p>
+          <p>Reset</p>
         </a>
         <div class="searchBar__mainSection__input--aside__separator"></div>
         <a href="">
@@ -56,9 +52,7 @@
         />
       </div>
       <div class="searchBar__mainSection__view--button">
-        <p class="searchBar__mainSection__view--button__text">
-          Organize
-        </p>
+        <p class="searchBar__mainSection__view--button__text">Organize</p>
         <img
           class="searchBar__mainSection__view--button__arrow"
           src="../../../assets/icons/arrowDown.svg"
@@ -69,5 +63,5 @@
   </div>
 </div>
 
-<app-adding-modal [showModal]="showModal" />
+<app-adding-modal [showAddingModal]="showAddingModal" />
 <app-card-view [childListFilter]="searchValue" />

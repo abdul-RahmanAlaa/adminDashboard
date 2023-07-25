@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment.development';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { environment } from 'src/environments/environment.development';
     SearchBarComponent,
     CardViewComponent,
     AddingModalComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,

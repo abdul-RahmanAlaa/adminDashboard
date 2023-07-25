@@ -1,0 +1,105 @@
+<div class="overlay" [ngClass]="{ show: showEditingModal }"></div>
+
+<div class="editModal" [ngClass]="{ show: showEditingModal }">
+  <div class="editModal__header">
+    <div class="editModal__header--title"></div>
+    <div class="editModal__header--title">
+      <h2>{{ element.name }}</h2>
+    </div>
+    <div class="editModal__header--title">
+      <a type="button" (click)="closeModal()">
+        <span>&times;</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="editModal__body">
+    <img
+      class="editModal__body--bgImage"
+      [src]="element.image"
+      [alt]="element.image"
+    />
+
+    <form class="editModal__body--form">
+      <div class="editModal__body--form__field">
+        <label for="name">{{ element.type }} Name :</label>
+        <input
+          type="text"
+          name="name"
+          formControlName="name"
+          [value]="element.name"
+        />
+      </div>
+
+      <div class="editModal__body--form__field">
+        <label for="image">{{ element.type }} Image Sucre :</label>
+        <input
+          type="url"
+          name="image"
+          formControlName="image"
+          [value]="element.image"
+        />
+      </div>
+
+      <div class="editModal__body--form__field">
+        <label for="status">{{ element.type }} status :</label>
+        <input
+          type="text"
+          name="status"
+          formControlName="status"
+          [value]="element.status"
+        />
+      </div>
+
+      <div class="editModal__body--form__field">
+        <label for="description">{{ element.type }} Description :</label>
+        <textarea
+          type="text"
+          name="description"
+          formControlName="description"
+          [value]="element.description"
+        >
+        </textarea>
+      </div>
+    </form>
+  </div>
+
+  <div class="editModal__footer">
+    <div>
+      <a
+        type="submit"
+        class="editModal__footer--button delete"
+        (click)="deleteElement()"
+      >
+        Delete Element
+      </a>
+    </div>
+
+    <div>
+      <a
+        type="submit"
+        class="editModal__footer--button"
+        [ngClass]="{ show: toggleEdit }"
+        [ngClass]="{ hide: !toggleEdit }"
+        (click)="editElement()"
+      >
+        Edit Element
+      </a>
+
+      <a
+        type="submit"
+        class="editModal__footer--button"
+        [ngClass]="{ hide: toggleEdit }"
+        (click)="saveChanges()"
+      >
+        Save Changes
+      </a>
+    </div>
+
+    <div>
+      <a type="button" class="editModal__footer--button" (click)="closeModal()">
+        Close editModal
+      </a>
+    </div>
+  </div>
+</div>

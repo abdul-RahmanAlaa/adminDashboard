@@ -95,6 +95,9 @@
         }
       }
     }
+    & > a > .moreDetails {
+      cursor: pointer;
+    }
   }
 }
 .filterList {

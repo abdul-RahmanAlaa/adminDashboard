@@ -15,7 +15,7 @@
   }
 }
 
-.modal {
+.editModal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -55,24 +55,32 @@
   }
 
   &__body {
-    width: min(100ch, 100% - 5rem);
+    width: min(100ch, 100% - 2rem);
     margin-inline: auto;
     padding: 1rem;
-    @media only screen and (max-width: 772px) {
-      &--field {
-        display: flex;
-        flex-direction: column;
-      }
+    display: flex;
+    flex-direction: row;
+
+    &--bgImage {
+      width: 30vw;
+      margin: 0 1rem 0 0;
     }
 
-    &--field {
+    &--form__field {
       display: flex;
-      justify-content: space-between;
+      width: 30vw;
+      // justify-content: space-between;
       margin: 1rem 0;
       height: 2.5rem;
 
       & > label {
         padding-right: 1rem;
+        width: 20vw;
+      }
+      & > textarea {
+        padding-right: 1rem;
+        width: 22vw;
+        height: 7vh;
       }
 
       & > a {
@@ -124,6 +132,16 @@
 
     &--button {
       cursor: pointer;
+
+      &.show {
+        display: block;
+      }
+      &.hide {
+        display: none;
+      }
+    }
+    .delete {
+      color: red;
     }
   }
 }

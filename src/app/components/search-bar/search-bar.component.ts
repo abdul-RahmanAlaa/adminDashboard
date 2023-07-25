@@ -9,12 +9,12 @@ export class SearchBarComponent {
   searchValue: string = '';
 
   // the model toggler start here
-  @Output() toggleShowModal = new EventEmitter<boolean>();
-  showModal = false;
+  @Output() toggleShowAddingModal = new EventEmitter<boolean>();
+  showAddingModal = false;
 
-  toggleShowModalValue(): void {
-    this.showModal = !this.showModal;
-    this.toggleShowModal.emit(this.showModal);
+  toggleShowAddingModalValue(): void {
+    this.showAddingModal = !this.showAddingModal;
+    this.toggleShowAddingModal.emit(this.showAddingModal);
   }
   // the model toggler end here
 }

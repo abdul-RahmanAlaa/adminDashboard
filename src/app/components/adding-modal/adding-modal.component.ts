@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ElementsService } from 'src/app/services/elements.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-adding-modal',
@@ -8,28 +9,45 @@ import { ElementsService } from 'src/app/services/elements.service';
   styleUrls: ['./adding-modal.component.scss'],
 })
 export class AddingModalComponent {
-  @Input() showModal = false;
+  @Input() showAddingModal = false;
+
   elementForm: FormGroup;
+  id = uuidv4();
 
   constructor(
     private _fb: FormBuilder,
     private _elementsService: ElementsService
   ) {
     this.elementForm = this._fb.group({
-      title: '',
-      image: '',
+      id: this.id,
+      name: '',
       type: '',
-      rDate: '',
+      releaseDate: '',
+      genres: this._fb.array(['']),
+      description: '',
+      image: '',
       status: '',
+      subtitles: '',
+      dubbing: '',
+      rate: '',
     });
   }
 
+  get genres() {
+    return this.elementForm.get('genres') as FormArray;
+  }
+
+  addGenre() {
+    if (this.genres.length < 3) {
+      this.genres.push(this._fb.control(''));
+    }
+  }
+
   closeModal(): void {
-    this.showModal = false;
+    this.showAddingModal = false;
   }
 
   saveModal(): void {
-    // Perform save action here
     if (this.elementForm.valid) {
       this._elementsService.addElement(this.elementForm.value).subscribe({
         next: (val: any) => {

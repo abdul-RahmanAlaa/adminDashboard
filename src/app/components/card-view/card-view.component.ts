@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IElement } from 'src/app/models/ielement';
 import { ElementsService } from 'src/app/services/elements.service';
 
@@ -16,13 +9,23 @@ import { ElementsService } from 'src/app/services/elements.service';
 })
 export class CardViewComponent implements OnInit {
   elements: IElement[] = [];
+  data: IElement[] = [];
   private _childListFilter: string = '';
 
-  // the alphabets filters start here
-  alphabets: string[] = [];
-  selectedFilter = 'All';
+  // the model toggler start here
+  @Output() toggleShowEditingModal = new EventEmitter<boolean>();
+  showEditingModal = false;
+  @Output() elementIdValue = new EventEmitter<number>();
+  elementId!: number;
 
-  // the alphabets filters end here
+  toggleShowEditingModalValue(id: number): void {
+    this.showEditingModal = !this.showEditingModal;
+    this.toggleShowEditingModal.emit(this.showEditingModal);
+
+    this.elementId = id;
+    this.elementIdValue.emit(this.elementId);
+  }
+  // the model toggler end here
 
   constructor(private elementService: ElementsService) {}
 
@@ -39,6 +42,9 @@ export class CardViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getElementsList();
+    this.elementService.getElementListFire().subscribe((data) => {
+      this.data = data;
+    });
 
     for (let i = 65; i <= 90; i++) {
       this.alphabets.push(String.fromCharCode(i));
@@ -65,10 +71,14 @@ export class CardViewComponent implements OnInit {
     } else {
       filterBy = filterBy.toLocaleLowerCase();
       return this.elements.filter((element: IElement) =>
-        element.title.toLocaleLowerCase().includes(filterBy)
+        element.name.toLocaleLowerCase().includes(filterBy)
       );
     }
   }
+
+  // the alphabets filters start here
+  alphabets: string[] = [];
+  selectedFilter = 'All';
 
   filterElements(selectedFilter: string): IElement[] {
     let filteredElements = this.elements;
@@ -76,7 +86,7 @@ export class CardViewComponent implements OnInit {
     if (selectedFilter !== 'All') {
       filteredElements = filteredElements.filter(
         (element: IElement) =>
-          element.title.charAt(0).toLocaleLowerCase() ===
+          element.name.charAt(0).toLocaleLowerCase() ===
           selectedFilter.toLocaleLowerCase()
       );
     } else {
@@ -86,3 +96,4 @@ export class CardViewComponent implements OnInit {
     return filteredElements;
   }
 }
+// the alphabets filters end here
