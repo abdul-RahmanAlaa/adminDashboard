@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar__brand">
-    <a href="">
+    <a routerLink="/home">
       <img
         class="navbar__brand--img"
         src="/assets/icons/NetflixLogo.svg"
@@ -49,6 +49,14 @@
         src="../../../assets/icons/arrowDown.svg"
         alt="more info"
       />
+      <div class="navbar__profile--options">
+        <div class="option">
+          <a href="">User Interface</a>
+        </div>
+        <div class="option">
+          <a (click)="logOut()">LogOut</a>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

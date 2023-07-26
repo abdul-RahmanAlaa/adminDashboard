@@ -27,6 +27,7 @@
     &__input {
       display: flex;
       position: relative;
+      justify-content: space-around;
       background-color: var(--secondary-bg);
       min-width: 70%;
       border-radius: 5px;

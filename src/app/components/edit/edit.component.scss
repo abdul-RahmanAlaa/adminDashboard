@@ -55,32 +55,45 @@
   }
 
   &__body {
-    // width: min(100ch, 100% - 2rem);
     margin-inline: auto;
     padding: 1rem;
     display: flex;
     flex-direction: row;
+    @media only screen and (max-width: 772px) {
+      justify-content: space-around !important;
+    }
 
     &--bgImage {
       width: 50%;
       margin: 0 1rem 0 0;
+      @media only screen and (max-width: 772px) {
+        display: none;
+      }
     }
 
     &--form__field {
       display: flex;
       width: 30vw;
-      // justify-content: space-between;
       margin: 1rem 0;
       height: 2.5rem;
+      @media only screen and (max-width: 772px) {
+        width: 100%;
+      }
 
       & > label {
         padding-right: 1rem;
         width: 20vw;
+        @media only screen and (max-width: 772px) {
+          width: 100%;
+        }
       }
       & > textarea {
         padding-right: 1rem;
         width: 22vw;
         height: 7vh;
+        @media only screen and (max-width: 772px) {
+          width: 100%;
+        }
       }
 
       & > a {

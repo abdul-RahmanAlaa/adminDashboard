@@ -1,0 +1,48 @@
+.auth {
+  display: flex;
+  justify-content: center;
+  margin-top: 20vh;
+}
+
+.authForm {
+  display: inherit;
+  flex-direction: column;
+  min-width: 50vh;
+  border: solid 1px white;
+  border-radius: 10px;
+  padding: 1rem;
+
+  &__felid {
+    display: inherit;
+    justify-content: space-around;
+
+    & > * {
+      margin: 1rem 0;
+      height: 2rem;
+    }
+
+    & > label {
+      min-width: 8rem;
+    }
+    & > input {
+      width: 100%;
+      padding: 0.5rem;
+    }
+  }
+
+  & > .forgetBtn {
+    align-self: flex-end;
+    padding: 0 0.5rem 1rem 0;
+    color: aquamarine;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(105, 105, 105);
+    }
+  }
+
+  & > .btn {
+    cursor: pointer;
+    height: 2rem;
+  }
+}

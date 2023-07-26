@@ -37,12 +37,38 @@
     display: flex;
     margin: 0 1rem 0.25rem 0.5rem;
     cursor: pointer;
+    position: relative;
 
     // transition: all 0.25s ease;
-    
+
     &:hover &--arrow {
       transform: rotate(180deg);
       transition: all 0.25s ease;
+    }
+
+    &:hover &--options {
+      display: block;
+    }
+
+    &--options {
+      display: none;
+      position: absolute;
+      background-color: #2a2a2a;
+      text-align: center;
+      z-index: 99;
+      top: 2.5rem;
+      right: 1rem;
+      min-width: 10rem;
+
+      & > .option {
+        padding: 0.75rem;
+        border: 1px solid rgb(185, 184, 184);
+
+        & > a {
+          text-decoration: none;
+          color: aliceblue;
+        }
+      }
     }
   }
 }

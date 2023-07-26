@@ -8,6 +8,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class SearchBarComponent {
   searchValue: string = '';
 
+  @Output() isLoggedOut = new EventEmitter<boolean>();
+
   // the model toggler start here
   @Output() toggleShowAddingModal = new EventEmitter<boolean>();
   showAddingModal = false;

@@ -37,6 +37,7 @@ export class EditComponent implements OnChanges {
 
   closeModal(): void {
     this.showEditingModal = false;
+    this.toggleEdit = false;
   }
 
   editElement(): void {
@@ -46,7 +47,7 @@ export class EditComponent implements OnChanges {
   saveChanges(): void {
     this.toggleEdit = false;
     this._elementsService
-      .updateElementFire(this.element)
+      .updateElementFire(this.element, this.elementId)
       .then(() => {
         alert('Element updated successfully');
       })
@@ -58,10 +59,10 @@ export class EditComponent implements OnChanges {
   deleteElement(): void {
     if (confirm(`Are you sure you want to delete [ ${this.element.name} ]`)) {
       this._elementsService
-        .deleteElementFire(this.element)
+        .deleteElementFire(this.elementId)
         .then(() => {
           alert('Element deleted successfully');
-
+          console.log(this.elementId);
           this.showEditingModal = false;
         })
         .catch((error) => {

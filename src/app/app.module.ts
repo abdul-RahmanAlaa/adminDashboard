@@ -15,6 +15,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment.development';
 import { EditComponent } from './components/edit/edit.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { LoginComponent } from './components/login/login.component';
+import { WiledCardComponent } from './components/wiled-card/wiled-card.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     CardViewComponent,
     AddingModalComponent,
     EditComponent,
+    LoginComponent,
+    WiledCardComponent,
   ],
   imports: [
     BrowserModule,

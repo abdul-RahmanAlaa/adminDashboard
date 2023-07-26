@@ -8,13 +8,13 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ElementsService {
-  fireStoreRef = this.fireStore.collection('NetflixDB');
+  collectionRef = this.fireStore.collection('NetflixDB');
 
   constructor(private fireStore: AngularFirestore) {}
 
   addElementFire(element: IElement) {
     return new Promise<any>((resolve, reject) => {
-      this.fireStoreRef.add(element).then(
+      this.collectionRef.add(element).then(
         (response) => {
           console.log(response);
         },
@@ -24,11 +24,11 @@ export class ElementsService {
   }
 
   getElementsListFire() {
-    return this.fireStoreRef.snapshotChanges();
+    return this.collectionRef.snapshotChanges();
   }
 
   getElementByIdFire(id: string): Observable<IElement> {
-    return this.fireStoreRef
+    return this.collectionRef
       .doc(id)
       .get()
       .pipe(
@@ -42,11 +42,11 @@ export class ElementsService {
       );
   }
 
-  updateElementFire(element: IElement): Promise<void> {
-    return this.fireStoreRef.doc(element.id).update(element);
+  updateElementFire(element: IElement, id: string): Promise<void> {
+    return this.collectionRef.doc(id).update(element);
   }
 
-  deleteElementFire(element: IElement) {
-    return this.fireStoreRef.doc(element.id).delete();
+  deleteElementFire(id: string) {
+    return this.collectionRef.doc(id).delete();
   }
 }

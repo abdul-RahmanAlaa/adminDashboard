@@ -25,17 +25,31 @@
 
 <div class="card" *ngFor="let element of elements">
   <div class="card__data">
-    <img class="card__data--image" [src]="element.image" [alt]="element.name" />
+    <div>
+      <img
+        class="card__data--image"
+        [src]="element.image"
+        [alt]="element.name"
+      />
+    </div>
     <div class="card__data--info">
       <h3>{{ element.name }}</h3>
       <div class="card__data--info__details">
-        <p class="card__data--info__details--data">{{ element.id }}</p>
-        <div></div>
         <p class="card__data--info__details--data">{{ element.type }}</p>
-        <div></div>
-        <p class="card__data--info__details--data">{{ element.releaseDate }}</p>
       </div>
-      <div class="card__data--info__QC">
+      <div>
+        <p class="card__data--info__details--data">
+          Release Date : {{ element.releaseDate }}
+        </p>
+      </div>
+      <div class="card__data--info__details genres">
+        <p class="card__data--info__details--data">{{ element.genres[0] }}</p>
+        <div></div>
+        <p class="card__data--info__details--data">{{ element.genres[1] }}</p>
+        <div></div>
+        <p class="card__data--info__details--data">{{ element.genres[2] }}</p>
+      </div>
+      <!-- <div class="card__data--info__QC">
         <div class="card__data--info__QC--data" *ngIf="element.rate != 0">
           <img src="../../../assets/icons/yellowDot.svg" alt="Fix Notes" />
           <p>{{ element.status }}</p>
@@ -53,11 +67,22 @@
           <p>{{ element.subtitles }}</p>
           <p>Rushed</p>
         </div>
+      </div> -->
+    </div>
+  </div>
+  <div class="card__details--aside">
+    <div class="card__details--chart">
+      <div class="semi-donut" [style.--percentage]="element.rate * 10">
+        Rating : {{ element.rate }} /10
       </div>
+    </div>
+    <div class="card__details--description">
+      <p>
+        {{ element.description }}
+      </p>
     </div>
   </div>
   <div class="card__details">
-    <div class="card__details--icons"></div>
     <a>
       <img
         src="../../../assets/icons/arrowRight.svg"

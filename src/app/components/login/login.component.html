@@ -1,0 +1,33 @@
+<div class="auth">
+  <form class="authForm" [formGroup]="loginForm">
+    <div class="authForm__felid">
+      <label for="email">Email :</label>
+      <input name="email" type="text" formControlName="email" />
+    </div>
+
+    <div class="authForm__felid">
+      <label for="password">Password :</label>
+      <input name="password" type="password" formControlName="password" />
+    </div>
+
+    <a class="forgetBtn" type="button"> Forget the password !</a>
+
+    <input
+      class="btn"
+      name="submit"
+      type="submit"
+      value="Login"
+      (click)="logIn()"
+    />
+    <!-- <input
+      class="btn"
+      name="submit"
+      type="submit"
+      value="Logout"
+      (click)="logOut()"
+    /> -->
+  </form>
+  <!-- 
+  <div *ngIf="adminAuth.user | async">logged in</div>
+  <div *ngIf="!(adminAuth.user | async)">not logged in</div> -->
+</div>
