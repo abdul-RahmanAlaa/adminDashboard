@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ElementsService } from 'src/app/services/elements.service';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-adding-modal',
@@ -12,24 +12,24 @@ export class AddingModalComponent {
   @Input() showAddingModal = false;
 
   elementForm: FormGroup;
-  id = uuidv4();
+  // id = uuidv4();
 
   constructor(
     private _fb: FormBuilder,
     private _elementsService: ElementsService
   ) {
     this.elementForm = this._fb.group({
-      id: this.id,
-      name: '',
-      type: '',
-      releaseDate: '',
+      // id: this.id,
+      name: [''],
+      type: [''],
+      releaseDate: [''],
+      description: [''],
+      image: [''],
+      status: [''],
+      subtitles: [''],
+      dubbing: [''],
+      rate: [''],
       genres: this._fb.array(['']),
-      description: '',
-      image: '',
-      status: '',
-      subtitles: '',
-      dubbing: '',
-      rate: '',
     });
   }
 
@@ -45,19 +45,15 @@ export class AddingModalComponent {
 
   closeModal(): void {
     this.showAddingModal = false;
+    this.elementForm.reset();
   }
 
   saveModal(): void {
     if (this.elementForm.valid) {
-      this._elementsService.addElement(this.elementForm.value).subscribe({
-        next: (val: any) => {
-          alert('added successfully');
-          this.closeModal();
-        },
-        error: (error: any) => {
-          console.log(error);
-        },
-      });
+      this._elementsService.addElementFire(this.elementForm.value);
+      alert(`You added this element successfully`);
+      this.closeModal();
+      this.elementForm.reset();
     }
   }
 }

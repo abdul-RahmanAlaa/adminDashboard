@@ -55,14 +55,14 @@
   }
 
   &__body {
-    width: min(100ch, 100% - 2rem);
+    // width: min(100ch, 100% - 2rem);
     margin-inline: auto;
     padding: 1rem;
     display: flex;
     flex-direction: row;
 
     &--bgImage {
-      width: 30vw;
+      width: 50%;
       margin: 0 1rem 0 0;
     }
 

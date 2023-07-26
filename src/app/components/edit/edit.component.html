@@ -26,8 +26,26 @@
         <input
           type="text"
           name="name"
-          formControlName="name"
-          [value]="element.name"
+          [(ngModel)]="element.name"
+          [disabled]="!toggleEdit"
+        />
+      </div>
+
+      <div class="editModal__body--form__field">
+        <label for="type">Element Type :</label>
+        <select name="type" [(ngModel)]="element.type" [disabled]="!toggleEdit">
+          <option value="Series">Series</option>
+          <option value="Movies">Movies</option>
+        </select>
+      </div>
+
+      <div class="editModal__body--form__field">
+        <label for="releaseDate">Element Release Date :</label>
+        <input
+          type="datetime"
+          name="releaseDate"
+          [(ngModel)]="element.releaseDate"
+          [disabled]="!toggleEdit"
         />
       </div>
 
@@ -36,8 +54,8 @@
         <input
           type="url"
           name="image"
-          formControlName="image"
-          [value]="element.image"
+          [(ngModel)]="element.image"
+          [disabled]="!toggleEdit"
         />
       </div>
 
@@ -46,8 +64,38 @@
         <input
           type="text"
           name="status"
-          formControlName="status"
-          [value]="element.status"
+          [(ngModel)]="element.status"
+          [disabled]="!toggleEdit"
+        />
+      </div>
+
+      <div class="editModal__body--form__field">
+        <label for="subtitles">{{ element.type }} subtitles :</label>
+        <input
+          type="number"
+          name="subtitles"
+          [(ngModel)]="element.subtitles"
+          [disabled]="!toggleEdit"
+        />
+      </div>
+
+      <div class="editModal__body--form__field">
+        <label for="dubbing">{{ element.type }} dubbing :</label>
+        <input
+          type="number"
+          name="dubbing"
+          [(ngModel)]="element.dubbing"
+          [disabled]="!toggleEdit"
+        />
+      </div>
+
+      <div class="editModal__body--form__field">
+        <label for="rate">{{ element.type }} rate :</label>
+        <input
+          type="number"
+          name="rate"
+          [(ngModel)]="element.rate"
+          [disabled]="!toggleEdit"
         />
       </div>
 
@@ -56,8 +104,8 @@
         <textarea
           type="text"
           name="description"
-          formControlName="description"
-          [value]="element.description"
+          [(ngModel)]="element.description"
+          [disabled]="!toggleEdit"
         >
         </textarea>
       </div>
@@ -71,7 +119,7 @@
         class="editModal__footer--button delete"
         (click)="deleteElement()"
       >
-        Delete Element
+        Delete {{ element.type }}
       </a>
     </div>
 
@@ -79,8 +127,8 @@
       <a
         type="submit"
         class="editModal__footer--button"
-        [ngClass]="{ show: toggleEdit }"
-        [ngClass]="{ hide: !toggleEdit }"
+        [ngClass]="{ show: !toggleEdit }"
+        [ngClass]="{ hide: toggleEdit }"
         (click)="editElement()"
       >
         Edit Element
@@ -89,7 +137,7 @@
       <a
         type="submit"
         class="editModal__footer--button"
-        [ngClass]="{ hide: toggleEdit }"
+        [ngClass]="{ hide: !toggleEdit }"
         (click)="saveChanges()"
       >
         Save Changes
@@ -98,7 +146,7 @@
 
     <div>
       <a type="button" class="editModal__footer--button" (click)="closeModal()">
-        Close editModal
+        Close
       </a>
     </div>
   </div>

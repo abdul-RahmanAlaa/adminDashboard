@@ -2,12 +2,12 @@ export const environment = {
   production: false,
 
   firebaseConfig: {
-    apiKey: 'AIzaSyBHntPLa0l4dS40cqjLS0vqsGe6JHlWFr0',
-    authDomain: 'netflix-clone-64778.firebaseapp.com',
-    databaseURL: 'https://netflix-clone-64778-default-rtdb.firebaseio.com',
-    projectId: 'netflix-clone-64778',
-    storageBucket: 'netflix-clone-64778.appspot.com',
-    messagingSenderId: '334113013168',
-    appId: '1:334113013168:web:d485e87db022c6c870ea75',
+    apiKey: 'AIzaSyAu7JcOy8_dEjUB1YNa9Hc2D6sF1gz2Xn8',
+    authDomain: 'netflixdb-db.firebaseapp.com',
+    projectId: 'netflixdb-db',
+    storageBucket: 'netflixdb-db.appspot.com',
+    messagingSenderId: '228919910934',
+    appId: '1:228919910934:web:3068a48248ad860068cb37',
+    measurementId: 'G-8Q7HJHZ3D2',
   },
 };

@@ -1,5 +1,5 @@
 export interface IElement {
-  id: number;
+  id: string;
   name: string;
   type: 'Series' | 'Movies';
   releaseDate: Date;

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { IElement } from 'src/app/models/ielement';
 import { ElementsService } from 'src/app/services/elements.service';
 import { Subscription } from 'rxjs';
@@ -10,8 +10,8 @@ import { Subscription } from 'rxjs';
 })
 export class EditComponent implements OnChanges {
   @Input() showEditingModal: boolean = false;
-  @Input() elementId!: number;
-  toggleEdit: boolean = true;
+  @Input() elementId!: string;
+  toggleEdit: boolean = false;
   element: IElement = {} as IElement;
 
   subscriptions?: Subscription;
@@ -19,15 +19,19 @@ export class EditComponent implements OnChanges {
   constructor(private _elementsService: ElementsService) {}
 
   ngOnChanges(): void {
-    this.openedModal();
-    console.log(this.elementId);
+    this.openedModal(this.elementId);
   }
 
-  openedModal(): void {
+  openedModal(id: string): void {
     this.subscriptions = this._elementsService
-      .getElementById(this.elementId)
-      .subscribe((element) => {
-        this.element = element;
+      .getElementByIdFire(id)
+      .subscribe({
+        next: (element) => {
+          this.element = element;
+        },
+        error: (err) => {
+          console.log('Error Occurred ' + err.message);
+        },
       });
   }
 
@@ -36,36 +40,33 @@ export class EditComponent implements OnChanges {
   }
 
   editElement(): void {
-    this.toggleEdit = false;
+    this.toggleEdit = true;
   }
 
   saveChanges(): void {
-    this._elementsService.editElement(this.element).subscribe({
-      next: (prd) => {
-        this.toggleEdit = true;
-
-        alert('Product updated successfully');
-      },
-      error: (err) => {
-        console.log('Error With Edit Product' + err.message);
-      },
-    });
+    this.toggleEdit = false;
+    this._elementsService
+      .updateElementFire(this.element)
+      .then(() => {
+        alert('Element updated successfully');
+      })
+      .catch((err) => {
+        console.log('Error With Edit Element ' + err.message);
+      });
   }
 
   deleteElement(): void {
-    let confirmValue = confirm(
-      `Are you sure you want to delete this ${this.element.type}`
-    );
-    if (confirmValue) {
-      this._elementsService.deleteElement(this.element.id).subscribe({
-        next: (res) => {
-          alert('Product deleted successfully');
-          this.closeModal();
-        },
-        error: (err) => {
-          alert('Error With Delete Product' + err.message);
-        },
-      });
+    if (confirm(`Are you sure you want to delete [ ${this.element.name} ]`)) {
+      this._elementsService
+        .deleteElementFire(this.element)
+        .then(() => {
+          alert('Element deleted successfully');
+
+          this.showEditingModal = false;
+        })
+        .catch((error) => {
+          console.error('Error deleting element: ', error);
+        });
     }
   }
 

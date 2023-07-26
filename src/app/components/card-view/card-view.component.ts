@@ -15,10 +15,10 @@ export class CardViewComponent implements OnInit {
   // the model toggler start here
   @Output() toggleShowEditingModal = new EventEmitter<boolean>();
   showEditingModal = false;
-  @Output() elementIdValue = new EventEmitter<number>();
-  elementId!: number;
+  @Output() elementIdValue = new EventEmitter<string>();
+  elementId!: string;
 
-  toggleShowEditingModalValue(id: number): void {
+  toggleShowEditingModalValue(id: string): void {
     this.showEditingModal = !this.showEditingModal;
     this.toggleShowEditingModal.emit(this.showEditingModal);
 
@@ -30,21 +30,18 @@ export class CardViewComponent implements OnInit {
   constructor(private elementService: ElementsService) {}
 
   getElementsList() {
-    this.elementService.getElements().subscribe({
-      next: (res) => {
-        this.elements = res;
-      },
-      error: (err) => {
-        console.log(err);
-      },
+    this.elementService.getElementsListFire().subscribe((res) => {
+      this.elements = res.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as {}),
+        } as IElement;
+      });
     });
   }
 
   ngOnInit(): void {
     this.getElementsList();
-    this.elementService.getElementListFire().subscribe((data) => {
-      this.data = data;
-    });
 
     for (let i = 65; i <= 90; i++) {
       this.alphabets.push(String.fromCharCode(i));

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { IElement } from '../models/ielement';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map } from 'rxjs/operators';
@@ -9,53 +8,45 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ElementsService {
-  constructor(private _http: HttpClient, private fireStore: AngularFirestore) {}
+  fireStoreRef = this.fireStore.collection('NetflixDB');
 
-  // getElementListFire() {
-  //   return this.fireStore.collection('NetflixClone').snapshotChanges();
-  // }
-  getElementListFire() {
-    return this.fireStore
-      .collection('NetflixClone')
-      .snapshotChanges()
+  constructor(private fireStore: AngularFirestore) {}
+
+  addElementFire(element: IElement) {
+    return new Promise<any>((resolve, reject) => {
+      this.fireStoreRef.add(element).then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => reject(error)
+      );
+    });
+  }
+
+  getElementsListFire() {
+    return this.fireStoreRef.snapshotChanges();
+  }
+
+  getElementByIdFire(id: string): Observable<IElement> {
+    return this.fireStoreRef
+      .doc(id)
+      .get()
       .pipe(
-        map((actions) =>
-          actions.map((a) => {
-            const data = a.payload.doc.data() as IElement;
-            return { ...data };
-          })
-        )
+        map((doc) => {
+          if (doc.exists) {
+            return doc.data() as IElement;
+          } else {
+            throw new Error(`Document with ID ${id} does not exist`);
+          }
+        })
       );
   }
 
-  addElement(data: any): Observable<any> {
-    return this._http.post<IElement>('http://localhost:3000/elements', data);
+  updateElementFire(element: IElement): Promise<void> {
+    return this.fireStoreRef.doc(element.id).update(element);
   }
 
-  getElements(): Observable<any> {
-    return this._http.get<IElement>('http://localhost:3000/elements');
-  }
-
-  getElementById(id: number): Observable<IElement> {
-    return this.getElements().pipe(
-      map((elements) => elements.find((element: IElement) => element.id === id))
-    );
-  }
-
-  editElement(element: IElement): Observable<IElement> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    };
-    return this._http.put<IElement>(
-      `http://localhost:3000/elements/${element.id}`,
-      JSON.stringify(element),
-      httpOptions
-    );
-  }
-
-  deleteElement(id: number): Observable<IElement> {
-    return this._http.delete<IElement>(`http://localhost:3000/elements/${id}`);
+  deleteElementFire(element: IElement) {
+    return this.fireStoreRef.doc(element.id).delete();
   }
 }

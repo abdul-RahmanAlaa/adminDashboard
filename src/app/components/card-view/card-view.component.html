@@ -25,11 +25,7 @@
 
 <div class="card" *ngFor="let element of elements">
   <div class="card__data">
-    <img
-      class="card__data--image"
-      [src]="element.image"
-      [alt]="element.name"
-    />
+    <img class="card__data--image" [src]="element.image" [alt]="element.name" />
     <div class="card__data--info">
       <h3>{{ element.name }}</h3>
       <div class="card__data--info__details">
