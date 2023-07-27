@@ -22,12 +22,9 @@ export class AddingModalComponent {
       // id: this.id,
       name: [''],
       type: [''],
-      releaseDate: [''],
+      // releaseDate: [''],
       description: [''],
-      image: [''],
-      status: [''],
-      subtitles: [''],
-      dubbing: [''],
+      link: [''], //image
       rate: [''],
       genres: this._fb.array(['']),
     });

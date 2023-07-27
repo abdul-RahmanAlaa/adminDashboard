@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ElementsService {
-  collectionRef = this.fireStore.collection('NetflixDB');
+  collectionRef = this.fireStore.collection('NetflixClone');
 
   constructor(private fireStore: AngularFirestore) {}
 
@@ -23,11 +23,24 @@ export class ElementsService {
     });
   }
 
-  getElementsListFire() {
+  getElementsListFire(lastId?: any) {
+    // let collectionRef = this.fireStore.collection('NetflixClone', (ref) => {
+    //   let query = ref.orderBy('timestamp', 'desc').limit(10);
+
+    //   if (lastId) {
+    //     let lastVisible = this.collectionRef.doc(lastId);
+    //     query = query.startAfter(lastVisible);
+    //   }
+    //   return query;
+    // });
+
+    // return collectionRef.snapshotChanges();
     return this.collectionRef.snapshotChanges();
   }
 
   getElementByIdFire(id: string): Observable<IElement> {
+    console.log(`Document with ID ${id} `);
+
     return this.collectionRef
       .doc(id)
       .get()

@@ -2,12 +2,9 @@ export interface IElement {
   id: string;
   name: string;
   type: 'Series' | 'Movies';
-  releaseDate: Date;
-  genres: { id: number; name: string }[];
+  // releaseDate: Date;
+  Genres: { id: number; name: string }[];
   description: string;
-  image: string;
-  status: string;
-  subtitles: number;
-  dubbing: number;
+  link: string;
   rate: number;
 }

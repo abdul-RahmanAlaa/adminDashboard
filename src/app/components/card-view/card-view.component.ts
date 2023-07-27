@@ -20,14 +20,47 @@ export class CardViewComponent implements OnInit {
 
   toggleShowEditingModalValue(id: string): void {
     this.showEditingModal = !this.showEditingModal;
+    console.log(this.showEditingModal);
+
     this.toggleShowEditingModal.emit(this.showEditingModal);
 
+    console.log(id);
     this.elementId = id;
+
     this.elementIdValue.emit(this.elementId);
   }
   // the model toggler end here
 
   constructor(private elementService: ElementsService) {}
+
+  ngOnInit(): void {
+    this.getElementsList();
+    
+    for (let i = 65; i <= 90; i++) {
+      this.alphabets.push(String.fromCharCode(i));
+    }
+
+    // window.addEventListener('scroll', this.loadMore.bind(this));
+  }
+
+  // loadMore() {
+  //   const lastElement = this.elements[this.elements.length - 1];
+  //   const lastId = lastElement.id;
+
+  //   if (!lastElement) {
+  //     return;
+  //   }
+
+  //   this.elementService.getElementsListFire(lastId).subscribe((res) => {
+  //     const newElements = res.map((e) => {
+  //       return {
+  //         id: e.payload.doc.id,
+  //         ...(e.payload.doc.data() as {}),
+  //       } as IElement;
+  //     });
+  //     this.elements = [...this.elements, ...newElements];
+  //   });
+  // }
 
   getElementsList() {
     this.elementService.getElementsListFire().subscribe((res) => {
@@ -38,14 +71,6 @@ export class CardViewComponent implements OnInit {
         } as IElement;
       });
     });
-  }
-
-  ngOnInit(): void {
-    this.getElementsList();
-
-    for (let i = 65; i <= 90; i++) {
-      this.alphabets.push(String.fromCharCode(i));
-    }
   }
 
   @Input() get childListFilter(): string {
